@@ -1,2 +1,3 @@
-# face-recognition
-a face recognition system created by Node.js &amp; React
+# Face Recognition
+
+a face recognition system created by Node.js & React
