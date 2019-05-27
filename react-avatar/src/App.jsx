@@ -1,7 +1,9 @@
 import React from 'react';
+import { render } from 'react-dom';
+import ReactAvatar from './ReactAvatar.jsx';
 
 const App = () => (
-	<div>test</div>
+	<ReactAvatar />
 );
 
-export default App;
+render(<App />, document.getElementById('root'));

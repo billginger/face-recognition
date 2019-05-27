@@ -1,0 +1,35 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+	entry: {
+		'js/bundle': './src/App.jsx'
+	},
+	output: {
+		filename: '[name].js?[contenthash]',
+		path: __dirname + '/example'
+	},
+	module: {
+		rules: [{
+			test: /\.(js|jsx)$/,
+			exclude: /node_modules/,
+			use: {
+				loader: 'babel-loader',
+				options: {
+					presets: [
+						['@babel/preset-env', { targets: { chrome: 58 } }],
+						'@babel/preset-react'
+					]
+				}
+			}
+		}, {
+			test: /\.less$/,
+			use: [ 'css-loader', 'less-loader?javascriptEnabled=1' ]
+		}]
+	},
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: 'src/index.html',
+			filename: 'index.html'
+		})
+	]
+};
