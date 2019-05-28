@@ -86,6 +86,17 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "../react-icon/dist/bundle.js":
+/*!************************************!*\
+  !*** ../react-icon/dist/bundle.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = function (e) {\n  var t = {};\n\n  function r(n) {\n    if (t[n]) return t[n].exports;\n    var o = t[n] = {\n      i: n,\n      l: !1,\n      exports: {}\n    };\n    return e[n].call(o.exports, o, o.exports, r), o.l = !0, o.exports;\n  }\n\n  return r.m = e, r.c = t, r.d = function (e, t, n) {\n    r.o(e, t) || Object.defineProperty(e, t, {\n      enumerable: !0,\n      get: n\n    });\n  }, r.r = function (e) {\n    \"undefined\" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {\n      value: \"Module\"\n    }), Object.defineProperty(e, \"__esModule\", {\n      value: !0\n    });\n  }, r.t = function (e, t) {\n    if (1 & t && (e = r(e)), 8 & t) return e;\n    if (4 & t && \"object\" == typeof e && e && e.__esModule) return e;\n    var n = Object.create(null);\n    if (r.r(n), Object.defineProperty(n, \"default\", {\n      enumerable: !0,\n      value: e\n    }), 2 & t && \"string\" != typeof e) for (var o in e) r.d(n, o, function (t) {\n      return e[t];\n    }.bind(null, o));\n    return n;\n  }, r.n = function (e) {\n    var t = e && e.__esModule ? function () {\n      return e.default;\n    } : function () {\n      return e;\n    };\n    return r.d(t, \"a\", t), t;\n  }, r.o = function (e, t) {\n    return Object.prototype.hasOwnProperty.call(e, t);\n  }, r.p = \"\", r(r.s = 1);\n}([function (e, t) {\n  e.exports = __webpack_require__(/*! react */ \"../react-icon/node_modules/react/index.js\");\n}, function (e, t, r) {\n  \"use strict\";\n\n  r.r(t);\n  var n = r(0),\n      o = r.n(n),\n      c = {\n    add_a_photo: \"M3 4V1h2v3h3v2H5v3H3V6H0V4h3zm3 6V7h3V4h7l1.83 2H21c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V10h3zm7 9c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-3.2-5c0 1.77 1.43 3.2 3.2 3.2s3.2-1.43 3.2-3.2-1.43-3.2-3.2-3.2-3.2 1.43-3.2 3.2z\",\n    crop_free: \"M3 5v4h2V5h4V3H5c-1.1 0-2 .9-2 2zm2 10H3v4c0 1.1.9 2 2 2h4v-2H5v-4zm14 4h-4v2h4c1.1 0 2-.9 2-2v-4h-2v4zm0-16h-4v2h4v4h2V5c0-1.1-.9-2-2-2z\",\n    tag_faces: \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z\"\n  };\n\n  t.default = ({\n    className: e,\n    type: t,\n    color: r\n  }) => {\n    const n = c[t];\n    if (!n) throw new Error(`No icon of type ${t}!`);\n    return o.a.createElement(\"svg\", {\n      xmlns: \"http://www.w3.org/2000/svg\",\n      width: \"24\",\n      height: \"24\",\n      viewBox: \"0 0 24 24\",\n      className: e\n    }, o.a.createElement(\"path\", {\n      d: n,\n      fill: r\n    }));\n  };\n}]);\n\n//# sourceURL=webpack:///../react-icon/dist/bundle.js?");
+
+/***/ }),
+
 /***/ "../react-icon/node_modules/object-assign/index.js":
 /*!*********************************************************!*\
   !*** ../react-icon/node_modules/object-assign/index.js ***!
@@ -143,30 +154,6 @@ eval("/** @license React v16.8.6\n * react.development.js\n *\n * Copyright (c) 
 
 "use strict";
 eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs/react.development.js */ \"../react-icon/node_modules/react/cjs/react.development.js\");\n}\n\n\n//# sourceURL=webpack:///../react-icon/node_modules/react/index.js?");
-
-/***/ }),
-
-/***/ "../react-icon/src/Icon.jsx":
-/*!**********************************!*\
-  !*** ../react-icon/src/Icon.jsx ***!
-  \**********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"../react-icon/node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _IconLibrary_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./IconLibrary.jsx */ \"../react-icon/src/IconLibrary.jsx\");\n\n\n\nconst Icon = ({\n  className,\n  type,\n  color\n}) => {\n  const SVG = _IconLibrary_jsx__WEBPACK_IMPORTED_MODULE_1__[\"default\"][type];\n\n  if (!SVG) {\n    throw new Error(`No icon of type ${type}!`);\n  }\n\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SVG, {\n    xmlns: \"http://www.w3.org/2000/svg\",\n    width: \"24\",\n    height: \"24\",\n    viewBox: \"0 0 24 24\",\n    className: className,\n    color: color\n  });\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Icon);\n\n//# sourceURL=webpack:///../react-icon/src/Icon.jsx?");
-
-/***/ }),
-
-/***/ "../react-icon/src/IconLibrary.jsx":
-/*!*****************************************!*\
-  !*** ../react-icon/src/IconLibrary.jsx ***!
-  \*****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"../react-icon/node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nconst IconLibrary = {\n  add_a_photo: props => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"svg\", props, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"path\", {\n    d: \"M3 4V1h2v3h3v2H5v3H3V6H0V4h3zm3 6V7h3V4h7l1.83 2H21c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V10h3zm7 9c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-3.2-5c0 1.77 1.43 3.2 3.2 3.2s3.2-1.43 3.2-3.2-1.43-3.2-3.2-3.2-3.2 1.43-3.2 3.2z\",\n    fill: props.color\n  })),\n  crop_free: props => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"svg\", props, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"path\", {\n    d: \"M3 5v4h2V5h4V3H5c-1.1 0-2 .9-2 2zm2 10H3v4c0 1.1.9 2 2 2h4v-2H5v-4zm14 4h-4v2h4c1.1 0 2-.9 2-2v-4h-2v4zm0-16h-4v2h4v4h2V5c0-1.1-.9-2-2-2z\",\n    fill: props.color\n  })),\n  tag_faces: props => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"svg\", props, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"path\", {\n    d: \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z\",\n    fill: props.color\n  }))\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (IconLibrary);\n\n//# sourceURL=webpack:///../react-icon/src/IconLibrary.jsx?");
 
 /***/ }),
 
@@ -366,7 +353,7 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _react_icon_src_Icon_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../react-icon/src/Icon.jsx */ \"../react-icon/src/Icon.jsx\");\n/* harmony import */ var _less_style_less__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./less/style.less */ \"./src/less/style.less\");\n/* harmony import */ var _less_style_less__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_less_style_less__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\nconst Avatar = () => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  id: \"react-avatar\"\n}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_react_icon_src_Icon_jsx__WEBPACK_IMPORTED_MODULE_1__[\"default\"], {\n  className: \"icon\",\n  type: \"add_a_photo\",\n  color: \"#fff\"\n}));\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Avatar);\n\n//# sourceURL=webpack:///./src/Avatar.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _react_icon_dist_bundle_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../react-icon/dist/bundle.js */ \"../react-icon/dist/bundle.js\");\n/* harmony import */ var _react_icon_dist_bundle_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_react_icon_dist_bundle_js__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _less_style_less__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./less/style.less */ \"./src/less/style.less\");\n/* harmony import */ var _less_style_less__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_less_style_less__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\nconst Avatar = () => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  id: \"react-avatar\"\n}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_react_icon_dist_bundle_js__WEBPACK_IMPORTED_MODULE_1___default.a, {\n  className: \"icon\",\n  type: \"add_a_photo\",\n  color: \"#fff\"\n}));\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Avatar);\n\n//# sourceURL=webpack:///./src/Avatar.jsx?");
 
 /***/ }),
 

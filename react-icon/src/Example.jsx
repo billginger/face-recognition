@@ -4,8 +4,9 @@ import Icon from './Icon.jsx';
 
 const Example = () => (
 	<div>
-		<Icon type="crop" />
-		<Icon type="face" />
+		<Icon type="add_a_photo" />
+		<Icon type="crop_free" />
+		<Icon type="tag_faces" />
 	</div>
 );
 

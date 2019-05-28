@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from '../../react-icon/src/Icon.jsx';
+import Icon from '../../react-icon/dist/bundle.js';
 import './less/style.less';
 
 const Avatar = () => (
