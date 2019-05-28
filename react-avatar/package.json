@@ -4,8 +4,8 @@
 	"description": "an avatar processing module built by React",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"build": "webpack --config webpack.config.dev.js --mode development",
-		"watch": "webpack --config webpack.config.dev.js --mode development -w",
+		"build": "webpack --config webpack.config.example.js --mode development",
+		"watch": "webpack --config webpack.config.example.js --mode development -w",
 		"dist": "webpack --config webpack.config.dist.js -p"
 	},
 	"author": "Bill",

@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/App.jsx");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/Example.jsx");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -274,27 +274,27 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 
 /***/ }),
 
-/***/ "./src/App.jsx":
-/*!*********************!*\
-  !*** ./src/App.jsx ***!
-  \*********************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _ReactAvatar_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ReactAvatar.jsx */ \"./src/ReactAvatar.jsx\");\n\n\n\n\nconst App = () => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, \"\\u7ACB\\u523B\\u4E0A\\u8F09\\u76F8\\u7247\\u6216\\u62CD\\u651D\\u76F8\\u7247\", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"br\", null), \"\\u4EE5\\u9762\\u90E8\\u8B58\\u8A8D\\u5EFA\\u7ACB\\u5C08\\u5C6C\\u60A8\\u7684 Face ID\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ReactAvatar_jsx__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"button\", null, \"Next\")));\n\nObject(react_dom__WEBPACK_IMPORTED_MODULE_1__[\"render\"])(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App, null), document.getElementById('root'));\n\n//# sourceURL=webpack:///./src/App.jsx?");
-
-/***/ }),
-
-/***/ "./src/ReactAvatar.jsx":
-/*!*****************************!*\
-  !*** ./src/ReactAvatar.jsx ***!
-  \*****************************/
+/***/ "./src/Avatar.jsx":
+/*!************************!*\
+  !*** ./src/Avatar.jsx ***!
+  \************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _less_style_less__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./less/style.less */ \"./src/less/style.less\");\n/* harmony import */ var _less_style_less__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_less_style_less__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nconst ReactAvatar = () => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  id: \"react-avatar\"\n}, \"test\");\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (ReactAvatar);\n\n//# sourceURL=webpack:///./src/ReactAvatar.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _less_style_less__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./less/style.less */ \"./src/less/style.less\");\n/* harmony import */ var _less_style_less__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_less_style_less__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nconst Avatar = () => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  id: \"react-avatar\"\n}, \"test\");\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Avatar);\n\n//# sourceURL=webpack:///./src/Avatar.jsx?");
+
+/***/ }),
+
+/***/ "./src/Example.jsx":
+/*!*************************!*\
+  !*** ./src/Example.jsx ***!
+  \*************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _Avatar_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Avatar.jsx */ \"./src/Avatar.jsx\");\n\n\n\n\nconst Example = () => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, \"\\u7ACB\\u523B\\u4E0A\\u8F09\\u76F8\\u7247\\u6216\\u62CD\\u651D\\u76F8\\u7247\", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"br\", null), \"\\u4EE5\\u9762\\u90E8\\u8B58\\u8A8D\\u5EFA\\u7ACB\\u5C08\\u5C6C\\u60A8\\u7684 Face ID\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatar_jsx__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"button\", null, \"Next\")));\n\nObject(react_dom__WEBPACK_IMPORTED_MODULE_1__[\"render\"])(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Example, null), document.getElementById('root'));\n\n//# sourceURL=webpack:///./src/Example.jsx?");
 
 /***/ }),
 

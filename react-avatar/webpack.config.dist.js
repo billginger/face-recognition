@@ -1,7 +1,7 @@
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-	entry: './src/ReactAvatar.jsx',
+	entry: './src/Avatar.jsx',
 	output: {
 		filename: 'bundle.js',
 		path: __dirname + '/dist',
