@@ -1,7 +1,8 @@
 import React from 'react';
+import './less/style.less';
 
 const ReactAvatar = () => (
-	<div>test</div>
+	<div id="react-avatar">test</div>
 );
 
 export default ReactAvatar;

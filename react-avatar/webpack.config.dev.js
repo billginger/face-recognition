@@ -23,7 +23,7 @@ module.exports = {
 			}
 		}, {
 			test: /\.less$/,
-			use: [ 'css-loader', 'less-loader?javascriptEnabled=1' ]
+			use: ['style-loader', 'css-loader', 'less-loader']
 		}]
 	},
 	plugins: [

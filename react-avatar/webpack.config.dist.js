@@ -4,8 +4,8 @@ module.exports = {
 	entry: './src/ReactAvatar.jsx',
 	output: {
 		filename: 'bundle.js',
-        path: __dirname + '/dist',
-        libraryTarget: 'commonjs2'
+		path: __dirname + '/dist',
+		libraryTarget: 'commonjs2'
 	},
 	module: {
 		rules: [{
@@ -22,8 +22,8 @@ module.exports = {
 			}
 		}, {
 			test: /\.less$/,
-			use: [ 'css-loader', 'less-loader?javascriptEnabled=1' ]
+			use: ['style-loader', 'css-loader', 'less-loader']
 		}]
-    },
-    externals: [nodeExternals()]
+	},
+	externals: [nodeExternals()]
 };
