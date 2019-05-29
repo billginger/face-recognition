@@ -1,4 +1,5 @@
 import React from 'react';
+import AvatarModal from './AvatarModal.jsx';
 import Icon from '../../react-icon/dist/bundle.js';
 import './less/style.less';
 
@@ -31,11 +32,16 @@ class Avatar extends React.Component {
 			reader.readAsDataURL(files[0]);
 		}
 		return (
-			<div id="react-avatar" onClick={selectFile}>
-				{iconTag}
-				<input ref="fileInput" type="file" accept="image/*" onChange={handleFileChange} />
-				{imgTag}
-			</div>
+			<React.Fragment>
+				<div id="react-avatar" onClick={selectFile}>
+					<input ref="fileInput" type="file" accept="image/*" onChange={handleFileChange} />
+					{iconTag}
+					{imgTag}
+				</div>
+				<AvatarModal>
+					<p>test</p>
+				</AvatarModal>
+			</React.Fragment>
 		);
 	}
 }
