@@ -22,7 +22,7 @@ class Avatar extends React.Component {
 		const handleFileChange = e => {
 			const files = e.target.files;
 			if (!files.length || files[0].type.indexOf('image/') != 0) {
-				return console.log('File Error!');
+				return console.log('Incorrect file format!');
 			}
 			const reader = new FileReader();
 			reader.onload = () => {
