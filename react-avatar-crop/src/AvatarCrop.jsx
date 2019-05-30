@@ -71,12 +71,31 @@ class AvatarCrop extends React.Component {
 			drag = 0;
 			canvas.style.cursor = 'default';
 		}
+		const handleZoom = e => {
+			e.preventDefault();
+			const originalWidth = width;
+			const originalHeight = height;
+			if (e.deltaY > 0) {
+				// zoom out
+				width *= 0.9;
+				height *= 0.9;
+			} else {
+				// zoom in
+				width *= 1.1;
+				height *= 1.1;
+			}
+			x = x - (width - originalWidth) / 2;
+			y = y - (height - originalHeight) / 2;
+			ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+			ctx.drawImage(img, x, y, width, height);
+		}
 		canvas.addEventListener('touchstart', handleTouchStart);
 		canvas.addEventListener('mousedown', handleTouchStart);
 		canvas.addEventListener('touchmove', handleTouchMove);
 		canvas.addEventListener('mousemove', handleTouchMove);
 		canvas.addEventListener('touchend', handleTouchEnd);
 		canvas.addEventListener('mouseup', handleTouchEnd);
+		canvas.addEventListener('mousewheel', handleZoom);
 	}
 	render() {
 		const { canvasWidth, canvasHeight } = this.state;
