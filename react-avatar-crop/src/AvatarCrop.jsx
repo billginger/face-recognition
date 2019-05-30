@@ -13,10 +13,10 @@ class AvatarCrop extends React.Component {
 		const ctx = canvas.getContext('2d');
 		const src = this.props.src;
 		const img = new Image();
+		let x = 0, y = 0, width, height;
 		img.onload = () => {
 			const imgWidth = img.width;
 			const imgHeight = img.height;
-			let width, height;
 			if (imgWidth > imgHeight) {
 				width = canvasHeight / imgHeight * imgWidth;
 				height = canvasHeight;
@@ -24,21 +24,42 @@ class AvatarCrop extends React.Component {
 				width = canvasWidth;
 				height = canvasWidth / imgWidth * imgHeight;
 			}
-			ctx.drawImage(img, 0, 0, width, height);
+			ctx.drawImage(img, x, y, width, height);
 		}
 		img.src = src;
 		// Handle
-		let drag = 0;
-		const handleTouchStart = () => {
+		let drag = 0, clientX, clientY;
+		const handleTouchStart = e => {
 			drag = 1;
+			canvas.style.cursor = 'move';
+			clientX = e.clientX;
+			clientY = e.clientY;
 		}
-		const handleTouchMove = () => {
+		const handleTouchMove = e => {
 			if (drag) {
-				console.log('drag!');
+				x = x + e.clientX - clientX;
+				y = y + e.clientY - clientY;
+				clientX = e.clientX;
+				clientY = e.clientY;
+				if (x > 0) {
+					x = 0;
+				}
+				if (x < canvasWidth - width) {
+					x = canvasWidth - width;
+				}
+				if (y > 0) {
+					y = 0;
+				}
+				if (y < canvasHeight - height) {
+					y = canvasHeight - height;
+				}
+				ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+				ctx.drawImage(img, x, y, width, height);
 			}
 		}
 		const handleTouchEnd = () => {
 			drag = 0;
+			canvas.style.cursor = 'default';
 		}
 		canvas.addEventListener('touchstart', handleTouchStart);
 		canvas.addEventListener('mousedown', handleTouchStart);
