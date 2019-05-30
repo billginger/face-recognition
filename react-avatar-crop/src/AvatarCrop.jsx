@@ -28,8 +28,18 @@ class AvatarCrop extends React.Component {
 		}
 		img.src = src;
 		// Handle
+		// https://www.cnblogs.com/airbreak/p/4595494.html
+		// https://developer.mozilla.org/zh-CN/docs/Web/API/Touch_events
+		// https://blog.csdn.net/jeffkxt/article/details/80472596
+		// https://github.com/Hzy0913/Mavatar/blob/master/index.js
+		// http://preview.binlive.cn/Mavatar/
+		// https://github.com/mosch/react-avatar-editor/blob/master/src/index.js
+		// https://react-avatar-editor.netlify.com/
 		let drag = 0, clientX, clientY;
 		const handleTouchStart = e => {
+			// if mouse, only accept left button
+			if (e.button && e.button > 1) return;
+			// touch start
 			drag = 1;
 			canvas.style.cursor = 'move';
 			clientX = e.clientX;
