@@ -39,7 +39,9 @@ class Avatar extends React.Component {
 					{imgTag}
 				</div>
 				<AvatarModal>
-					<p>test</p>
+					<div id="react-avatar-modal">
+						<canvas width="200" height="100"></canvas>
+					</div>
 				</AvatarModal>
 			</React.Fragment>
 		);
