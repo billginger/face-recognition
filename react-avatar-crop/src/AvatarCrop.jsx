@@ -67,8 +67,26 @@ class AvatarCrop extends React.Component {
 			pageX = e.pageX;
 			pageY = e.pageY;
 		}
+		const handleTouchZoom = scale => {
+			const originalWidth = width;
+			const originalHeight = height;
+			width = Math.floor(width * scale);
+			height = Math.floor(height * scale);
+			if (width < minWidth) {
+				width = minWidth;
+				height = minHeight;
+			}
+			if (width > maxWidth) {
+				width = maxWidth;
+				height = maxHeight;
+			}
+			x = x - Math.floor((width - originalWidth) / 2);
+			y = y - Math.floor((height - originalHeight) / 2);
+			drawImage();
+		}
 		const handleTouchMove = e => {
 			e.preventDefault();
+			if (e.scale) return handleTouchZoom(e.scale);
 			if (drag) {
 				x = x + e.pageX - pageX;
 				y = y + e.pageY - pageY;
@@ -77,13 +95,11 @@ class AvatarCrop extends React.Component {
 				drawImage();
 			}
 		}
-		const handleTouchEnd = e => {
+		const handleTouchEnd = () => {
 			drag = 0;
 			canvas.style.cursor = 'default';
-			const debugInfo = eventStringify(e);
-			this.setState({ debugInfo });
 		}
-		const handleZoom = e => {
+		const handleMouseZoom = e => {
 			e.preventDefault();
 			const originalWidth = width;
 			const originalHeight = height;
@@ -114,7 +130,7 @@ class AvatarCrop extends React.Component {
 		canvas.addEventListener('mousemove', handleTouchMove);
 		canvas.addEventListener('touchend', handleTouchEnd);
 		canvas.addEventListener('mouseup', handleTouchEnd);
-		canvas.addEventListener('mousewheel', handleZoom);
+		canvas.addEventListener('mousewheel', handleMouseZoom);
 	}
 	render() {
 		const { canvasWidth, canvasHeight, debugInfo } = this.state;
