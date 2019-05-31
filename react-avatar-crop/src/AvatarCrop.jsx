@@ -133,9 +133,19 @@ class AvatarCrop extends React.Component {
 		canvas.addEventListener('mousewheel', handleMouseZoom);
 	}
 	render() {
+		const handleRotate = () => {
+			const { canvas } = this.refs;
+			const ctx = canvas.getContext('2d');
+			ctx.save();
+			ctx.translate(canvas.width / 2, canvas.height / 2);
+			ctx.rotate(Math.PI / 2);
+			ctx.translate(-(canvas.width / 2), -(canvas.height / 2));
+			ctx.restore();
+		}
 		return (
 			<div id="react-avatar-crop" ref="pad">
 				<canvas ref="canvas"></canvas>
+				<a onClick={handleRotate}>Rotate</a>
 			</div>
 		);
 	}

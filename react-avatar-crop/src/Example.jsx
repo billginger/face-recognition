@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import AvatarCrop from './AvatarCrop.jsx';
 
 const Example = () => (
-	<div>
+	<div style={{ maxWidth: 640 }}>
 		<AvatarCrop src="img/pic.jpg" />
 	</div>
 );
