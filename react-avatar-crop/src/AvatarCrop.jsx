@@ -1,6 +1,6 @@
 import React from 'react';
-import Icon from '../../react-icon/dist/bundle.js';
-import './less/style.less';
+// import Icon from '../../react-icon/dist/bundle.js';
+// import './less/style.less';
 
 const eventStringify = e => {
 	let str = '{\n';
@@ -14,7 +14,7 @@ const eventStringify = e => {
 class AvatarCrop extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { canvasWidth: 640, canvasHeight: 640 };
+		this.state = { canvasWidth: 400, canvasHeight: 400 };
 	}
 	componentDidMount() {
 		const { canvasWidth, canvasHeight } = this.state;
@@ -120,8 +120,8 @@ class AvatarCrop extends React.Component {
 		const { canvasWidth, canvasHeight, debugInfo } = this.state;
 		return (
 			<div id="react-avatar-crop">
-				<canvas ref="canvas" width={canvasWidth} height={canvasHeight}></canvas>
-				<textarea style={{ width: 320, height: 320 }} value={debugInfo} />
+				<div><canvas ref="canvas" width={canvasWidth} height={canvasHeight}></canvas></div>
+				<div><textarea style={{ width: 320, height: 320 }} value={debugInfo} /></div>
 			</div>
 		);
 	}
