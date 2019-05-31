@@ -2,6 +2,7 @@ import React from 'react';
 // import Icon from '../../react-icon/dist/bundle.js';
 // import './less/style.less';
 
+/* // Debug Function
 const eventStringify = e => {
 	let str = '{\n';
 	for (let key in e) {
@@ -9,45 +10,49 @@ const eventStringify = e => {
 	}
 	str += '}\n';
 	return str;
-}
+} */
 
 class AvatarCrop extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { canvasWidth: 360, canvasHeight: 360 };
+		this.state = { canvasWidth: 320, canvasHeight: 320 };
 	}
 	componentDidMount() {
-		const { canvasWidth, canvasHeight } = this.state;
-		const canvas = this.refs.canvas;
+		const { src } = this.props;
+		const { pad, canvas } = this.refs;
+		canvas.width = pad.clientWidth;
+		canvas.height = pad.clientWidth;
 		const ctx = canvas.getContext('2d');
-		const src = this.props.src;
 		const img = new Image();
 		let x = 0, y = 0, width, height, maxWidth, maxHeight, minWidth, minHeight;
 		const drawImage = () => {
+			// Boundary Control
 			if (x > 0) {
 				x = 0;
 			}
-			if (x < canvasWidth - width) {
-				x = canvasWidth - width;
+			if (x < canvas.width - width) {
+				x = canvas.width - width;
 			}
 			if (y > 0) {
 				y = 0;
 			}
-			if (y < canvasHeight - height) {
-				y = canvasHeight - height;
+			if (y < canvas.height - height) {
+				y = canvas.height - height;
 			}
-			ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+			// Wipe & Draw
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
 			ctx.drawImage(img, x, y, width, height);
 		}
 		img.onload = () => {
 			const imgWidth = img.width;
 			const imgHeight = img.height;
+			// Fully Filled
 			if (imgWidth > imgHeight) {
-				width = Math.floor(canvasHeight / imgHeight * imgWidth);
-				height = canvasHeight;
+				width = Math.floor(canvas.height / imgHeight * imgWidth);
+				height = canvas.height;
 			} else {
-				width = canvasWidth;
-				height = Math.floor(canvasWidth / imgWidth * imgHeight);
+				width = canvas.width;
+				height = Math.floor(canvas.width / imgWidth * imgHeight);
 			}
 			maxWidth = imgWidth > width ? imgWidth : width;
 			maxHeight = imgHeight > height ? imgHeight : height;
@@ -62,7 +67,7 @@ class AvatarCrop extends React.Component {
 			const originalWidth = width;
 			const originalHeight = height;
 			if (offset < 0) {
-				// zoom out
+				// Zoom Out
 				width = Math.floor(width * 0.9);
 				height = Math.floor(height * 0.9);
 				if (width < minWidth) {
@@ -70,7 +75,7 @@ class AvatarCrop extends React.Component {
 					height = minHeight;
 				}
 			} else {
-				// zoom in
+				// Zoom In
 				width = Math.floor(width * 1.1);
 				height = Math.floor(height * 1.1);
 				if (width > maxWidth) {
@@ -78,14 +83,15 @@ class AvatarCrop extends React.Component {
 					height = maxHeight;
 				}
 			}
+			// Center Zoom
 			x = x - Math.floor((width - originalWidth) / 2);
 			y = y - Math.floor((height - originalHeight) / 2);
 			drawImage();
 		}
 		const handleTouchStart = e => {
-			// if mouse, only accept left button
+			// If mouse, only accept left button
 			if (e.button && e.button > 1) return;
-			// touch start
+			// Drag Start
 			drag = 1;
 			canvas.style.cursor = 'move';
 			pageX = e.pageX;
@@ -93,15 +99,15 @@ class AvatarCrop extends React.Component {
 		}
 		const handleTouchMove = e => {
 			e.preventDefault();
-			// if scale
+			// If scale, then zoom
 			if (e.scale && e.scale != 1) {
 				const offset = e.scale - scale;
+				// Zoom Smooth
 				if (Math.abs(offset) < 0.1) return;
-				this.setState({ debugInfo: offset });
 				scale = e.scale;
 				return handleZoom(offset);
 			}
-			// drag start
+			// No scale, then drag
 			if (drag) {
 				x = x + e.pageX - pageX;
 				y = y + e.pageY - pageY;
@@ -127,11 +133,9 @@ class AvatarCrop extends React.Component {
 		canvas.addEventListener('mousewheel', handleMouseZoom);
 	}
 	render() {
-		const { canvasWidth, canvasHeight, debugInfo } = this.state;
 		return (
-			<div id="react-avatar-crop">
-				<div><canvas ref="canvas" width={canvasWidth} height={canvasHeight}></canvas></div>
-				<div><textarea style={{ width: 320, height: 320 }} value={debugInfo} /></div>
+			<div id="react-avatar-crop" ref="pad">
+				<canvas ref="canvas"></canvas>
 			</div>
 		);
 	}
