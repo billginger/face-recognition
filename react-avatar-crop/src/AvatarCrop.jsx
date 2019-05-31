@@ -66,7 +66,6 @@ class AvatarCrop extends React.Component {
 			clientY = e.clientY;
 		}
 		const handleTouchMove = e => {
-			alert(e);
 			e.preventDefault();
 			if (drag) {
 				x = x + e.clientX - clientX;
@@ -74,6 +73,7 @@ class AvatarCrop extends React.Component {
 				clientX = e.clientX;
 				clientY = e.clientY;
 				drawImage();
+				this.setState({ debugInfo: e });
 			}
 		}
 		const handleTouchEnd = () => {
@@ -114,10 +114,11 @@ class AvatarCrop extends React.Component {
 		canvas.addEventListener('mousewheel', handleZoom);
 	}
 	render() {
-		const { canvasWidth, canvasHeight } = this.state;
+		const { canvasWidth, canvasHeight, debugInfo } = this.state;
 		return (
 			<div id="react-avatar-crop">
 				<canvas ref="canvas" width={canvasWidth} height={canvasHeight}></canvas>
+				<textarea>{debugInfo}</textarea>
 			</div>
 		);
 	}
