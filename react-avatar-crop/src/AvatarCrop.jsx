@@ -66,6 +66,8 @@ class AvatarCrop extends React.Component {
 			clientY = e.clientY;
 		}
 		const handleTouchMove = e => {
+			alert(e);
+			e.preventDefault();
 			if (drag) {
 				x = x + e.clientX - clientX;
 				y = y + e.clientY - clientY;
