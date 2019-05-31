@@ -93,11 +93,10 @@ class AvatarCrop extends React.Component {
 		}
 		const handleTouchMove = e => {
 			e.preventDefault();
-			const debugInfo = eventStringify(e);
-			this.setState({ debugInfo });
 			// if scale
 			if (e.scale && e.scale != 1) {
 				const offset = e.scale - scale;
+				this.setState({ debugInfo: offset });
 				scale = e.scale;
 				return handleZoom(offset);
 			}
