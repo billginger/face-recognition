@@ -2,6 +2,15 @@ import React from 'react';
 import Icon from '../../react-icon/dist/bundle.js';
 import './less/style.less';
 
+const eventStringify = e => {
+	let str = '{\n';
+	for (let key in e) {
+		str += `${key}: ${e[key]},\n`;
+	}
+	str += '}\n';
+	return str;
+}
+
 class AvatarCrop extends React.Component {
 	constructor(props) {
 		super(props);
@@ -48,13 +57,6 @@ class AvatarCrop extends React.Component {
 		}
 		img.src = src;
 		// Handle
-		// https://www.cnblogs.com/airbreak/p/4595494.html
-		// https://developer.mozilla.org/zh-CN/docs/Web/API/Touch_events
-		// https://blog.csdn.net/jeffkxt/article/details/80472596
-		// https://github.com/Hzy0913/Mavatar/blob/master/index.js
-		// http://preview.binlive.cn/Mavatar/
-		// https://github.com/mosch/react-avatar-editor/blob/master/src/index.js
-		// https://react-avatar-editor.netlify.com/
 		let drag = 0, clientX, clientY;
 		const handleTouchStart = e => {
 			// if mouse, only accept left button
@@ -73,7 +75,8 @@ class AvatarCrop extends React.Component {
 				clientX = e.clientX;
 				clientY = e.clientY;
 				drawImage();
-				this.setState({ debugInfo: e });
+				const debugInfo = eventStringify(e);
+				this.setState({ debugInfo });
 			}
 		}
 		const handleTouchEnd = () => {
@@ -118,7 +121,7 @@ class AvatarCrop extends React.Component {
 		return (
 			<div id="react-avatar-crop">
 				<canvas ref="canvas" width={canvasWidth} height={canvasHeight}></canvas>
-				<textarea>{debugInfo}</textarea>
+				<textarea style={{ width: 320, height: 320 }} value={debugInfo} />
 			</div>
 		);
 	}
