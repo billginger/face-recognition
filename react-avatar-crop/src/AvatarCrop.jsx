@@ -58,16 +58,7 @@ class AvatarCrop extends React.Component {
 		img.src = src;
 		// Handle
 		let drag = 0, pageX, pageY;
-		const handleTouchStart = e => {
-			// if mouse, only accept left button
-			if (e.button && e.button > 1) return;
-			// touch start
-			drag = 1;
-			canvas.style.cursor = 'move';
-			pageX = e.pageX;
-			pageY = e.pageY;
-		}
-		const handleTouchZoom = scale => {
+		const handleZoom = scale => {
 			const originalWidth = width;
 			const originalHeight = height;
 			width = Math.floor(width * scale);
@@ -84,9 +75,21 @@ class AvatarCrop extends React.Component {
 			y = y - Math.floor((height - originalHeight) / 2);
 			drawImage();
 		}
+		const handleTouchStart = e => {
+			// if mouse, only accept left button
+			if (e.button && e.button > 1) return;
+			// touch start
+			drag = 1;
+			canvas.style.cursor = 'move';
+			pageX = e.pageX;
+			pageY = e.pageY;
+		}
 		const handleTouchMove = e => {
 			e.preventDefault();
-			if (e.scale) return handleTouchZoom(e.scale);
+			if (e.scale && e.scale != 1) {
+				const scale = e.scale / 2;
+				return handleZoom(scale);
+			}
 			if (drag) {
 				x = x + e.pageX - pageX;
 				y = y + e.pageY - pageY;
@@ -101,28 +104,11 @@ class AvatarCrop extends React.Component {
 		}
 		const handleMouseZoom = e => {
 			e.preventDefault();
-			const originalWidth = width;
-			const originalHeight = height;
 			if (e.deltaY > 0) {
-				// zoom out
-				width = Math.floor(width * 0.9);
-				height = Math.floor(height * 0.9);
-				if (width < minWidth) {
-					width = minWidth;
-					height = minHeight;
-				}
+				handleZoom(0.9);
 			} else {
-				// zoom in
-				width = Math.floor(width * 1.1);
-				height = Math.floor(height * 1.1);
-				if (width > maxWidth) {
-					width = maxWidth;
-					height = maxHeight;
-				}
+				handleZoom(1.1);
 			}
-			x = x - Math.floor((width - originalWidth) / 2);
-			y = y - Math.floor((height - originalHeight) / 2);
-			drawImage();
 		}
 		canvas.addEventListener('touchstart', handleTouchStart);
 		canvas.addEventListener('mousedown', handleTouchStart);
