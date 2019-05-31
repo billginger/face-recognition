@@ -57,11 +57,11 @@ class AvatarCrop extends React.Component {
 		}
 		img.src = src;
 		// Handle
-		let drag = 0, pageX, pageY;
-		const handleZoom = scale => {
+		let drag = 0, scale = 0, pageX, pageY;
+		const handleZoom = delta => {
 			const originalWidth = width;
 			const originalHeight = height;
-			if (scale < 1) {
+			if (delta < 1) {
 				// zoom out
 				width = Math.floor(width * 0.9);
 				height = Math.floor(height * 0.9);
@@ -96,7 +96,11 @@ class AvatarCrop extends React.Component {
 			const debugInfo = eventStringify(e);
 			this.setState({ debugInfo });
 			// if scale
-			if (e.scale && e.scale != 1) return handleZoom(e.scale);
+			if (e.scale && e.scale != 1) {
+				const delta = e.scale - scale;
+				scale = e.scale;
+				return handleZoom(delta);
+			}
 			// drag start
 			if (drag) {
 				x = x + e.pageX - pageX;
