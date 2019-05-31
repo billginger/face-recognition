@@ -96,7 +96,7 @@ class AvatarCrop extends React.Component {
 			// if scale
 			if (e.scale && e.scale != 1) {
 				const offset = e.scale - scale;
-				if (Math.abs(offset) < 0.01) return;
+				if (Math.abs(offset) < 0.1) return;
 				this.setState({ debugInfo: offset });
 				scale = e.scale;
 				return handleZoom(offset);
