@@ -61,15 +61,22 @@ class AvatarCrop extends React.Component {
 		const handleZoom = scale => {
 			const originalWidth = width;
 			const originalHeight = height;
-			width = Math.floor(width * scale);
-			height = Math.floor(height * scale);
-			if (width < minWidth) {
-				width = minWidth;
-				height = minHeight;
-			}
-			if (width > maxWidth) {
-				width = maxWidth;
-				height = maxHeight;
+			if (scale < 1) {
+				// zoom out
+				width = Math.floor(width * 0.9);
+				height = Math.floor(height * 0.9);
+				if (width < minWidth) {
+					width = minWidth;
+					height = minHeight;
+				}
+			} else {
+				// zoom in
+				width = Math.floor(width * 1.1);
+				height = Math.floor(height * 1.1);
+				if (width > maxWidth) {
+					width = maxWidth;
+					height = maxHeight;
+				}
 			}
 			x = x - Math.floor((width - originalWidth) / 2);
 			y = y - Math.floor((height - originalHeight) / 2);
@@ -86,10 +93,7 @@ class AvatarCrop extends React.Component {
 		}
 		const handleTouchMove = e => {
 			e.preventDefault();
-			if (e.scale && e.scale != 1) {
-				const scale = e.scale / 2;
-				return handleZoom(scale);
-			}
+			if (e.scale && e.scale != 1) return handleZoom(e.scale);
 			if (drag) {
 				x = x + e.pageX - pageX;
 				y = y + e.pageY - pageY;
@@ -104,11 +108,7 @@ class AvatarCrop extends React.Component {
 		}
 		const handleMouseZoom = e => {
 			e.preventDefault();
-			if (e.deltaY > 0) {
-				handleZoom(0.9);
-			} else {
-				handleZoom(1.1);
-			}
+			handleZoom(-e.deltaY);
 		}
 		canvas.addEventListener('touchstart', handleTouchStart);
 		canvas.addEventListener('mousedown', handleTouchStart);
