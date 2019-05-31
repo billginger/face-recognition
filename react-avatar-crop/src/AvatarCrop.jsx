@@ -66,8 +66,6 @@ class AvatarCrop extends React.Component {
 			canvas.style.cursor = 'move';
 			pageX = e.pageX;
 			pageY = e.pageY;
-			const debugInfo = eventStringify(e);
-			this.setState({ debugInfo });
 		}
 		const handleTouchMove = e => {
 			e.preventDefault();
@@ -79,9 +77,11 @@ class AvatarCrop extends React.Component {
 				drawImage();
 			}
 		}
-		const handleTouchEnd = () => {
+		const handleTouchEnd = e => {
 			drag = 0;
 			canvas.style.cursor = 'default';
+			const debugInfo = eventStringify(e);
+			this.setState({ debugInfo });
 		}
 		const handleZoom = e => {
 			e.preventDefault();
