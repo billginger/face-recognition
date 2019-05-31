@@ -93,7 +93,11 @@ class AvatarCrop extends React.Component {
 		}
 		const handleTouchMove = e => {
 			e.preventDefault();
+			const debugInfo = eventStringify(e);
+			this.setState({ debugInfo });
+			// if scale
 			if (e.scale && e.scale != 1) return handleZoom(e.scale);
+			// drag start
 			if (drag) {
 				x = x + e.pageX - pageX;
 				y = y + e.pageY - pageY;
