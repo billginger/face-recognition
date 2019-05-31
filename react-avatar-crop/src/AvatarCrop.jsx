@@ -14,7 +14,7 @@ const eventStringify = e => {
 class AvatarCrop extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { canvasWidth: 400, canvasHeight: 400 };
+		this.state = { canvasWidth: 360, canvasHeight: 360 };
 	}
 	componentDidMount() {
 		const { canvasWidth, canvasHeight } = this.state;
@@ -66,6 +66,8 @@ class AvatarCrop extends React.Component {
 			canvas.style.cursor = 'move';
 			pageX = e.pageX;
 			pageY = e.pageY;
+			const debugInfo = eventStringify(e);
+			this.setState({ debugInfo });
 		}
 		const handleTouchMove = e => {
 			e.preventDefault();
@@ -75,8 +77,6 @@ class AvatarCrop extends React.Component {
 				pageX = e.pageX;
 				pageY = e.pageY;
 				drawImage();
-				const debugInfo = eventStringify(e);
-				this.setState({ debugInfo });
 			}
 		}
 		const handleTouchEnd = () => {
