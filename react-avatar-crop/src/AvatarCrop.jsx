@@ -57,23 +57,23 @@ class AvatarCrop extends React.Component {
 		}
 		img.src = src;
 		// Handle
-		let drag = 0, clientX, clientY;
+		let drag = 0, pageX, pageY;
 		const handleTouchStart = e => {
 			// if mouse, only accept left button
 			if (e.button && e.button > 1) return;
 			// touch start
 			drag = 1;
 			canvas.style.cursor = 'move';
-			clientX = e.clientX;
-			clientY = e.clientY;
+			pageX = e.pageX;
+			pageY = e.pageY;
 		}
 		const handleTouchMove = e => {
 			e.preventDefault();
 			if (drag) {
-				x = x + e.clientX - clientX;
-				y = y + e.clientY - clientY;
-				clientX = e.clientX;
-				clientY = e.clientY;
+				x = x + e.pageX - pageX;
+				y = y + e.pageY - pageY;
+				pageX = e.pageX;
+				pageY = e.pageY;
 				drawImage();
 				const debugInfo = eventStringify(e);
 				this.setState({ debugInfo });
