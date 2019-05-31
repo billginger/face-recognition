@@ -13,18 +13,38 @@ class AvatarCrop extends React.Component {
 		const ctx = canvas.getContext('2d');
 		const src = this.props.src;
 		const img = new Image();
-		let x = 0, y = 0, width, height;
+		let x = 0, y = 0, width, height, maxWidth, maxHeight, minWidth, minHeight;
+		const drawImage = () => {
+			if (x > 0) {
+				x = 0;
+			}
+			if (x < canvasWidth - width) {
+				x = canvasWidth - width;
+			}
+			if (y > 0) {
+				y = 0;
+			}
+			if (y < canvasHeight - height) {
+				y = canvasHeight - height;
+			}
+			ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+			ctx.drawImage(img, x, y, width, height);
+		}
 		img.onload = () => {
 			const imgWidth = img.width;
 			const imgHeight = img.height;
 			if (imgWidth > imgHeight) {
-				width = canvasHeight / imgHeight * imgWidth;
+				width = Math.floor(canvasHeight / imgHeight * imgWidth);
 				height = canvasHeight;
 			} else {
 				width = canvasWidth;
-				height = canvasWidth / imgWidth * imgHeight;
+				height = Math.floor(canvasWidth / imgWidth * imgHeight);
 			}
-			ctx.drawImage(img, x, y, width, height);
+			maxWidth = imgWidth > width ? imgWidth : width;
+			maxHeight = imgHeight > height ? imgHeight : height;
+			minWidth = width;
+			minHeight = height;
+			drawImage();
 		}
 		img.src = src;
 		// Handle
@@ -51,20 +71,7 @@ class AvatarCrop extends React.Component {
 				y = y + e.clientY - clientY;
 				clientX = e.clientX;
 				clientY = e.clientY;
-				if (x > 0) {
-					x = 0;
-				}
-				if (x < canvasWidth - width) {
-					x = canvasWidth - width;
-				}
-				if (y > 0) {
-					y = 0;
-				}
-				if (y < canvasHeight - height) {
-					y = canvasHeight - height;
-				}
-				ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-				ctx.drawImage(img, x, y, width, height);
+				drawImage();
 			}
 		}
 		const handleTouchEnd = () => {
@@ -77,17 +84,24 @@ class AvatarCrop extends React.Component {
 			const originalHeight = height;
 			if (e.deltaY > 0) {
 				// zoom out
-				width *= 0.9;
-				height *= 0.9;
+				width = Math.floor(width * 0.9);
+				height = Math.floor(height * 0.9);
+				if (width < minWidth) {
+					width = minWidth;
+					height = minHeight;
+				}
 			} else {
 				// zoom in
-				width *= 1.1;
-				height *= 1.1;
+				width = Math.floor(width * 1.1);
+				height = Math.floor(height * 1.1);
+				if (width > maxWidth) {
+					width = maxWidth;
+					height = maxHeight;
+				}
 			}
-			x = x - (width - originalWidth) / 2;
-			y = y - (height - originalHeight) / 2;
-			ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-			ctx.drawImage(img, x, y, width, height);
+			x = x - Math.floor((width - originalWidth) / 2);
+			y = y - Math.floor((height - originalHeight) / 2);
+			drawImage();
 		}
 		canvas.addEventListener('touchstart', handleTouchStart);
 		canvas.addEventListener('mousedown', handleTouchStart);
