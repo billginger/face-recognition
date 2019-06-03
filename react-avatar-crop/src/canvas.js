@@ -98,7 +98,6 @@ export default (container, src) => {
 		canvas.style.cursor = 'move';
 		pageX = e.pageX;
 		pageY = e.pageY;
-		console.log(e);
 	}
 	const handleTouchMove = e => {
 		e.preventDefault();
