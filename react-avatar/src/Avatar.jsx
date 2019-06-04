@@ -1,20 +1,34 @@
 import React from 'react';
 import AvatarModal from './AvatarModal.jsx';
 import Icon from '../../react-icon/dist/bundle.js';
+import AvatarCrop from '../../react-avatar-crop/dist/bundle.js';
 import './less/style.less';
 
 class Avatar extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { imgData: '' };
+		this.state = { imgData: '', avatarData: '' };
 	}
 	render() {
-		const { imgData } = this.state;
+		const { imgData, avatarData } = this.state;
 		const iconTag = (
-			!imgData && <Icon type="add_a_photo" color="#fff" />
+			!avatarData && <Icon type="add_a_photo" color="#fff" />
 		);
 		const imgTag = (
-			imgData && <img src={imgData} />
+			avatarData && <img src={avatarData} />
+		);
+		const handleCrop = dataURI => {
+			this.setState({ imgData: '', avatarData: dataURI });
+		}
+		const handleCancel = () => {
+			this.setState({ imgData: '' });
+		}
+		const avatarModal = (
+			<AvatarModal>
+				<div id="react-avatar-modal">
+					<AvatarCrop src={imgData} onCrop={handleCrop} onCancel={handleCancel} />
+				</div>
+			</AvatarModal>
 		);
 		// Handle
 		const selectFile = () => {
@@ -38,11 +52,7 @@ class Avatar extends React.Component {
 					{iconTag}
 					{imgTag}
 				</div>
-				<AvatarModal>
-					<div id="react-avatar-modal">
-						<canvas width="200" height="100"></canvas>
-					</div>
-				</AvatarModal>
+				{imgData && avatarModal}
 			</React.Fragment>
 		);
 	}
