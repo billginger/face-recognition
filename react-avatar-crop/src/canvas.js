@@ -117,17 +117,17 @@ export default (container, src) => {
 					offsetX = e.pageX - pageX;
 					offsetY = e.pageY - pageY;
 					break;
-				case 90:
-					offsetX = e.pageY - pageY;
-					offsetY = pageX - e.pageX;
+				case -90:
+					offsetX = pageY - e.pageY;
+					offsetY = e.pageX - pageX;
 					break;
-				case 180:
+				case -180:
 					offsetX = pageX - e.pageX;
 					offsetY = pageY - e.pageY;
 					break;
 				default:
-					offsetX = pageY - e.pageY;
-					offsetY = e.pageX - pageX;
+					offsetX = e.pageY - pageY;
+					offsetY = pageX - e.pageX;
 			}
 			x += offsetX;
 			y += offsetY;
@@ -158,8 +158,8 @@ export default (container, src) => {
 	container.appendChild(actions);
 	actions.appendChild(actionRotate);
 	const handleRotate = () => {
-		r += 90;
-		if (r == 360) {
+		r -= 90;
+		if (r <= -360) {
 			r = 0;
 		}
 		drawImage();
