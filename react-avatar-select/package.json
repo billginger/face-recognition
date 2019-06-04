@@ -1,5 +1,5 @@
 {
-	"name": "react-avatar",
+	"name": "react-avatar-select",
 	"version": "0.0.1",
 	"description": "an avatar processing module built by React",
 	"scripts": {

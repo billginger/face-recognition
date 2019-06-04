@@ -4,7 +4,7 @@ import Icon from '../../react-icon/dist/bundle.js';
 import AvatarCrop from '../../react-avatar-crop/dist/bundle.js';
 import './less/style.less';
 
-class Avatar extends React.Component {
+class AvatarSelect extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { imgData: '', avatarData: '' };
@@ -25,7 +25,7 @@ class Avatar extends React.Component {
 		}
 		const avatarModal = (
 			<AvatarModal>
-				<div id="react-avatar-modal">
+				<div id="react-avatar-select-modal">
 					<AvatarCrop src={imgData} onCrop={handleCrop} onCancel={handleCancel} />
 				</div>
 			</AvatarModal>
@@ -47,7 +47,7 @@ class Avatar extends React.Component {
 		}
 		return (
 			<React.Fragment>
-				<div id="react-avatar" onClick={selectFile}>
+				<div id="react-avatar-select" onClick={selectFile}>
 					<input ref="fileInput" type="file" accept="image/*" onChange={handleFileChange} />
 					{iconTag}
 					{imgTag}
@@ -58,4 +58,4 @@ class Avatar extends React.Component {
 	}
 }
 
-export default Avatar;
+export default AvatarSelect;

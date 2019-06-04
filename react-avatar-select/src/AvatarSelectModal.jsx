@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class AvatarModal extends React.Component {
+class AvatarSelectModal extends React.Component {
 	constructor(props) {
 		super(props);
 		this.el = document.createElement('div');
@@ -15,4 +15,4 @@ class AvatarModal extends React.Component {
 	}
 }
 
-export default AvatarModal;
+export default AvatarSelectModal;
