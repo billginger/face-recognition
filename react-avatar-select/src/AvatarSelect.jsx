@@ -1,5 +1,5 @@
 import React from 'react';
-import AvatarModal from './AvatarModal.jsx';
+import AvatarSelectModal from './AvatarSelectModal.jsx';
 import Icon from '../../react-icon/dist/bundle.js';
 import AvatarCrop from '../../react-avatar-crop/dist/bundle.js';
 import './less/style.less';
@@ -7,28 +7,29 @@ import './less/style.less';
 class AvatarSelect extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { imgData: '', avatarData: '' };
+		this.state = { imageData: '', avatarData: '' };
 	}
 	render() {
-		const { imgData, avatarData } = this.state;
+		const { imageData, avatarData } = this.state;
 		const iconTag = (
-			!avatarData && <Icon type="add_a_photo" color="#fff" />
+			<Icon type="add_a_photo" color="#fff" />
 		);
 		const imgTag = (
-			avatarData && <img src={avatarData} />
+			<img src={avatarData} />
 		);
+		// Avatar Crop
 		const handleCrop = dataURI => {
-			this.setState({ imgData: '', avatarData: dataURI });
+			this.setState({ imageData: '', avatarData: dataURI });
 		}
 		const handleCancel = () => {
-			this.setState({ imgData: '' });
+			this.setState({ imageData: '' });
 		}
 		const avatarModal = (
-			<AvatarModal>
+			<AvatarSelectModal>
 				<div id="react-avatar-select-modal">
-					<AvatarCrop src={imgData} onCrop={handleCrop} onCancel={handleCancel} />
+					<AvatarCrop src={imageData} onCrop={handleCrop} onCancel={handleCancel} />
 				</div>
-			</AvatarModal>
+			</AvatarSelectModal>
 		);
 		// Handle
 		const selectFile = () => {
@@ -41,7 +42,7 @@ class AvatarSelect extends React.Component {
 			}
 			const reader = new FileReader();
 			reader.onload = () => {
-				this.setState({ imgData: reader.result });
+				this.setState({ imageData: reader.result });
 			}
 			reader.readAsDataURL(files[0]);
 		}
@@ -49,10 +50,10 @@ class AvatarSelect extends React.Component {
 			<React.Fragment>
 				<div id="react-avatar-select" onClick={selectFile}>
 					<input ref="fileInput" type="file" accept="image/*" onChange={handleFileChange} />
-					{iconTag}
-					{imgTag}
+					{!avatarData && iconTag}
+					{avatarData && imgTag}
 				</div>
-				{imgData && avatarModal}
+				{imageData && avatarModal}
 			</React.Fragment>
 		);
 	}
