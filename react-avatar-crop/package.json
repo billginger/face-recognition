@@ -4,6 +4,7 @@
 	"description": "an avatar cropping module built by React",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "webpack-dev-server --config webpack.config.example.js",
 		"build": "webpack --config webpack.config.example.js --mode development",
 		"watch": "webpack --config webpack.config.example.js --mode development -w",
 		"dist": "webpack --config webpack.config.dist.js -p"
@@ -26,6 +27,7 @@
 		"style-loader": "^0.23.1",
 		"webpack": "^4.32.2",
 		"webpack-cli": "^3.3.2",
+		"webpack-dev-server": "^3.5.1",
 		"webpack-node-externals": "^1.7.2"
 	}
 }

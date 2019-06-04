@@ -29,5 +29,8 @@ module.exports = {
 			template: 'src/template.html',
 			filename: 'index.html'
 		})
-	]
+	],
+	devServer: {
+		contentBase: __dirname + '/example'
+	}
 };

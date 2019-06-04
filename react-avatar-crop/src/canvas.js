@@ -153,10 +153,13 @@ export default (container, src) => {
 	canvas.addEventListener('mousewheel', handleMouseZoom);
 	// Actions
 	const actions = document.createElement('div');
+	container.appendChild(actions);
 	const actionRotate = document.createElement('a');
 	actionRotate.innerText = 'Rotate';
-	container.appendChild(actions);
 	actions.appendChild(actionRotate);
+	const actionCrop = document.createElement('a');
+	actionCrop.innerText = 'Crop';
+	actions.appendChild(actionCrop);
 	const handleRotate = () => {
 		r -= 90;
 		if (r <= -360) {
@@ -164,5 +167,10 @@ export default (container, src) => {
 		}
 		drawImage();
 	}
+	const handleCrop = () => {
+		const dataURL = canvas.toDataURL('image/png');
+		console.log(dataURL);
+	}
 	actionRotate.addEventListener('click', handleRotate);
+	actionCrop.addEventListener('click', handleCrop);
 };
