@@ -8,7 +8,7 @@ const eventStringify = e => {
 	return str;
 } */
 
-export default (container, src) => {
+export default (container, src, onCrop, onCancel) => {
 	const canvas = document.createElement('canvas');
 	canvas.width = container.clientWidth;
 	canvas.height = container.clientWidth;
@@ -153,24 +153,32 @@ export default (container, src) => {
 	canvas.addEventListener('mousewheel', handleMouseZoom);
 	// Actions
 	const actions = document.createElement('div');
-	container.appendChild(actions);
+	// Cancel
+	const actionCancel = document.createElement('a');
+	actionCancel.innerText = 'Cancel';
+	actionCancel.addEventListener('click', () => {
+		onCancel();
+	});
+	// Rotate
 	const actionRotate = document.createElement('a');
 	actionRotate.innerText = 'Rotate';
-	actions.appendChild(actionRotate);
-	const actionCrop = document.createElement('a');
-	actionCrop.innerText = 'Crop';
-	actions.appendChild(actionCrop);
-	const handleRotate = () => {
+	actionRotate.addEventListener('click', () => {
 		r -= 90;
 		if (r <= -360) {
 			r = 0;
 		}
 		drawImage();
-	}
-	const handleCrop = () => {
+	});
+	// Crop
+	const actionCrop = document.createElement('a');
+	actionCrop.innerText = 'Crop';
+	actionCrop.addEventListener('click', () => {
 		const dataURL = canvas.toDataURL('image/png');
-		console.log(dataURL);
-	}
-	actionRotate.addEventListener('click', handleRotate);
-	actionCrop.addEventListener('click', handleCrop);
+		onCrop(dataURL);
+	});
+	// DOM
+	actions.appendChild(actionCancel);
+	actions.appendChild(actionRotate);
+	actions.appendChild(actionCrop);
+	container.appendChild(actions);
 };

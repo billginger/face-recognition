@@ -1,13 +1,13 @@
 import React from 'react';
 import canvas from './canvas.js';
 // import Icon from '../../react-icon/dist/bundle.js';
-// import './less/style.less';
+import './less/style.less';
 
 class AvatarCrop extends React.Component {
 	componentDidMount() {
 		const { container } = this.refs;
-		const { src } = this.props;
-		canvas(container, src);
+		const { src, onCrop, onCancel } = this.props;
+		canvas(container, src, onCrop, onCancel);
 	}
 	render() {
 		return (
